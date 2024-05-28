@@ -184,3 +184,62 @@ int main()
 // }
 // --> Task # 4
 // Its is too lengthy and we don't have our oops concepts cleared.so thats why it is undone .
+
+// Deep Copy:
+// #include <iostream>
+// using namespace std;
+class Over
+{
+	int* ball;
+	
+	public:
+		//Default Constructor
+		Over()
+		{
+			//Dynamically memory allocation
+			ball = new int;
+			*ball =0;
+		}
+		
+		//Copy Constructor 
+		Over(Over& other)
+		{
+		ball = new int;
+		//Sahllow Copy
+		ball = other.ball;	
+		}
+		
+		void Increment()
+		{
+			(*ball)++;
+		}
+		
+		int getBall()
+		{
+			return *ball;
+		}
+		
+		
+		~Over()
+		{
+			delete ball;
+		}
+};
+int main()
+{
+	Over o1;
+	o1.Increment();
+	o1.Increment();
+	o1.Increment();
+	o1.Increment();
+	o1.Increment();
+	o1.Increment();
+	Over o2=o1; //Create copy of an object
+	cout<<"Balls: "<<o1.getBall()<<endl;
+	cout<<"Balls: "<<o2.getBall()<<endl;
+	o2.Increment();
+	cout<<"Balls: "<<o1.getBall()<<endl;
+	cout<<"Balls: "<<o2.getBall()<<endl;
+	
+	return 0;
+}
